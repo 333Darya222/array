@@ -12,10 +12,9 @@ namespace ulearn
             int[] number = new int[N];
             FillArray(number);
             PrintArray(number);
-            int ind = FirstMin(number);
-            Console.WriteLine($"индекс  первого минимального числа: {ind}");
-            int max = LastMax(number);
-            Console.WriteLine($"индекс последрнего максималдьного числа:{max}");
+            int min = FirstMin(number);
+            int max = FirstMin(number);
+            Console.WriteLine($"индекс  первого минимального числа: {min}, индекс последнего максимального числа:{max}");
             //Console.WriteLine("N=");
             //int N = int.Parse(Console.ReadLine());
             //int[] number = new int[N];
@@ -30,21 +29,21 @@ namespace ulearn
         {
             for (int i = 0; i < arr.Length; i++)
             {
-                Console.WriteLine(arr[i]);
+                Console.WriteLine(arr[i]+ " ");
             }
-
+            Console.WriteLine();
 
 
         }
-
-        static int[] FillArray(int[] number)  //заполнение массива
+     
+        static int[] FillArray(int size)  //заполнение массива
         {
-
+            int[] number = new int[size];
             Random rnd = new Random();
 
             for (int i = 0; i < number.Length; i++)
             {
-                number[i] = rnd.Next(-100, 100);
+                number[i] = rnd.Next(1, 5);
 
             }
             return number;
@@ -83,35 +82,40 @@ namespace ulearn
 
         public static int FirstMin(int[] N)
         {
-           
+            int maxIndex = 0;
             int minIndex = 0;
             for (int i = 0; i < N.Length; i++)
             {
 
-                if (N[i] N[minIndex])
+                if (N[i] < N[minIndex])
                 {
                     minIndex = i;
+                }
+                if(N[i] < N[maxIndex])
+                {
+                    maxIndex = i;
                 }
                 
 
             }
             return minIndex;
-
-        }
-        public static int LastMax(int[] N)
-
-        {
-            int maxIndex = 0;
-            for (int i = 0; i < N.Length; i++)
-            {
-
-
-                if (N[i] <= N[maxIndex])
-                {
-                    maxIndex = i;
-                }
-            }
             return maxIndex;
+
         }
+        //public static int LastMax(int[] N)
+
+        //{
+        //    int maxIndex = 0;
+        //    for (int i = 0; i < N.Length; i++)
+        //    {
+
+
+        //        if (N[i] >= N[maxIndex])
+        //        {
+        //            maxIndex = i;
+        //        }
+        //    }
+        //    return maxIndex;
+        //}
     }
 }
