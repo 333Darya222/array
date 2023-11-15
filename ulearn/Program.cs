@@ -13,12 +13,22 @@ namespace ulearn
             FillArray(number);
             PrintArray(number);
 
+            int[] degreeOfTwo= DegreeOfTwo(number);
+            foreach(var degreeOftwo in degreeOfTwo)
+            {
+                if(degreeOftwo != 0)
+                {
+                    Console.WriteLine($"степени двойки:{degreeOftwo}");
+                }
+            }
+
             int[] PositiveOdd = PositiveOddNumbers(number);
             foreach (var PositiveOddNumbers in PositiveOdd)
             {
                 if (PositiveOddNumbers != 0) 
                 {
                     Console.WriteLine($"положительные нечетные числа из массива:{PositiveOddNumbers}");
+                   
                 }
             }
             
@@ -31,6 +41,7 @@ namespace ulearn
             Console.WriteLine($"индекс минимального числа: {ind}");
 
         }
+
         static void PrintArray(int[] arr)//вывести массив
         {
             for (int i = 0; i < arr.Length; i++)
@@ -139,6 +150,18 @@ namespace ulearn
             }
            
                 return positiveOddNumbers;
+        }
+        public static int[] DegreeOfTwo(int[] N)
+        {
+            int[] array = new int[N.Length];
+
+            for (int i = 0; i < N.Length; i++)
+            {
+                array[i] = (int)Math.Pow(2, i+1);
+
+            }
+
+            return array;
         }
     }
 }
