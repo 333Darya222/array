@@ -13,8 +13,12 @@ namespace ulearn
             FillArray(number);
             PrintArray(number);
 
-            int PositiveOdd=PositiveOddNumbers(number);
-            Console.WriteLine($"положительные нечетные числа из массива:{PositiveOdd}");
+            int[] PositiveOdd = PositiveOddNumbers(number);
+            foreach (var num in PositiveOdd)
+            {
+                Console.WriteLine($"положительные нечетные числа из массива:{num}");
+            }
+            //Console.WriteLine($"положительные нечетные числа из массива:{PositiveOdd}");
 
             int min = FirstMin(number);
             int max = LastMax(number);
@@ -114,20 +118,24 @@ namespace ulearn
             return maxIndex;
         }
 
-        public static int PositiveOddNumbers(int[]N)
+        public static int[] PositiveOddNumbers(int[]N)
         {
-            int Positive = N[0];
+            int[] positiveOddNumbers = new int[N.Length];
+            
             for(int i=0; i<N.Length; i++)
             {
                 
-                if (N[i] > 0 & (N[i] %2!=0) )
+                if (N[i] > 0 && (N[i] %2!=0) )
                 {
+                    
+                    positiveOddNumbers[i] = N[i];
 
-                    Positive = N[i];
+
                 }
                 
             }
-            return Positive;
+           
+                return positiveOddNumbers;
         }
     }
 }
