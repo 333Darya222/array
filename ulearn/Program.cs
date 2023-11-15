@@ -14,11 +14,14 @@ namespace ulearn
             PrintArray(number);
 
             int[] PositiveOdd = PositiveOddNumbers(number);
-            foreach (var num in PositiveOdd)
+            foreach (var PositiveOddNumbers in PositiveOdd)
             {
-                Console.WriteLine($"положительные нечетные числа из массива:{num}");
+                if (PositiveOddNumbers != 0) 
+                {
+                    Console.WriteLine($"положительные нечетные числа из массива:{PositiveOddNumbers}");
+                }
             }
-            //Console.WriteLine($"положительные нечетные числа из массива:{PositiveOdd}");
+            
 
             int min = FirstMin(number);
             int max = LastMax(number);
