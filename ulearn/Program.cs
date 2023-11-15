@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 
 namespace ulearn
 {
@@ -6,23 +7,21 @@ namespace ulearn
     {
         static void Main(string[] args)
         {
-
             Console.WriteLine("N=");
             int N = int.Parse(Console.ReadLine());
             int[] number = new int[N];
             FillArray(number);
             PrintArray(number);
+
+            int PositiveOdd=PositiveOddNumbers(number);
+            Console.WriteLine($"положительные нечетные числа из массива:{PositiveOdd}");
+
             int min = FirstMin(number);
             int max = LastMax(number);
             Console.WriteLine($"индекс  первого минимального числа: {min}, индекс последнего максимального числа:{max}");
-            //Console.WriteLine("N=");
-            //int N = int.Parse(Console.ReadLine());
-            //int[] number = new int[N];
-            //    FillArray(number);
 
-            //    PrintArray(number);
-            //    int ind = MinIndex(number);
-            //    Console.WriteLine($"индекс минимального числа: {ind}");
+            int ind = MinIndex(number);
+            Console.WriteLine($"индекс минимального числа: {ind}");
 
         }
         static void PrintArray(int[] arr)//вывести массив
@@ -43,7 +42,7 @@ namespace ulearn
 
             for (int i = 0; i < number.Length; i++)
             {
-                number[i] = rnd.Next(-2, 2);
+                number[i] = rnd.Next(-100, 100);
 
             }
             return number;
@@ -113,6 +112,22 @@ namespace ulearn
                 }
             }
             return maxIndex;
+        }
+
+        public static int PositiveOddNumbers(int[]N)
+        {
+            int Positive = N[0];
+            for(int i=0; i<N.Length; i++)
+            {
+                
+                if (N[i] > 0 & (N[i] %2!=0) )
+                {
+
+                    Positive = N[i];
+                }
+                
+            }
+            return Positive;
         }
     }
 }
