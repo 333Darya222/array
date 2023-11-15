@@ -13,10 +13,20 @@ namespace ulearn
             FillArray(number);
             PrintArray(number);
 
-            int[] degreeOfTwo= DegreeOfTwo(number);
-            foreach(var degreeOftwo in degreeOfTwo)
+
+
+            int[] progressia = Progressia(number);
+            foreach (var Progressia in progressia)
             {
-                if(degreeOftwo != 0)
+                
+                    Console.WriteLine($"прогрессия:{Progressia}");
+                
+            }
+
+            int[] degreeOfTwo = DegreeOfTwo(number);
+            foreach (var degreeOftwo in degreeOfTwo)
+            {
+                if (degreeOftwo != 0)
                 {
                     Console.WriteLine($"степени двойки:{degreeOftwo}");
                 }
@@ -25,13 +35,13 @@ namespace ulearn
             int[] PositiveOdd = PositiveOddNumbers(number);
             foreach (var PositiveOddNumbers in PositiveOdd)
             {
-                if (PositiveOddNumbers != 0) 
+                if (PositiveOddNumbers != 0)
                 {
                     Console.WriteLine($"положительные нечетные числа из массива:{PositiveOddNumbers}");
-                   
+
                 }
             }
-            
+
 
             int min = FirstMin(number);
             int max = LastMax(number);
@@ -46,16 +56,16 @@ namespace ulearn
         {
             for (int i = 0; i < arr.Length; i++)
             {
-                Console.WriteLine(arr[i]+ " ");
+                Console.WriteLine(arr[i] + " ");
             }
             Console.WriteLine();
 
 
         }
-     
+
         static int[] FillArray(int[] number)  //заполнение массива
         {
-          
+
             Random rnd = new Random();
 
             for (int i = 0; i < number.Length; i++)
@@ -99,7 +109,7 @@ namespace ulearn
 
         public static int FirstMin(int[] N)
         {
-            
+
             int minIndex = 0;
             for (int i = 0; i < N.Length; i++)
             {
@@ -108,12 +118,12 @@ namespace ulearn
                 {
                     minIndex = i;
                 }
-            
-                
+
+
 
             }
             return minIndex;
-           
+
 
         }
         public static int LastMax(int[] N)
@@ -132,24 +142,24 @@ namespace ulearn
             return maxIndex;
         }
 
-        public static int[] PositiveOddNumbers(int[]N)
+        public static int[] PositiveOddNumbers(int[] N)
         {
             int[] positiveOddNumbers = new int[N.Length];
-            
-            for(int i=0; i<N.Length; i++)
+
+            for (int i = 0; i < N.Length; i++)
             {
-                
-                if (N[i] > 0 && (N[i] %2!=0) )
+
+                if (N[i] > 0 && (N[i] % 2 != 0))
                 {
-                    
+
                     positiveOddNumbers[i] = N[i];
 
 
                 }
-                
+
             }
-           
-                return positiveOddNumbers;
+
+            return positiveOddNumbers;
         }
         public static int[] DegreeOfTwo(int[] N)
         {
@@ -157,10 +167,23 @@ namespace ulearn
 
             for (int i = 0; i < N.Length; i++)
             {
-                array[i] = (int)Math.Pow(2, i+1);
+                array[i] = (int)Math.Pow(2, i + 1);
 
             }
 
+            return array;
+        }
+        public static int[] Progressia(int[] N)
+        {
+            Console.WriteLine("A=");
+            int A = int.Parse(Console.ReadLine());
+            Console.WriteLine("D=");
+            int D = int.Parse(Console.ReadLine());
+            int[]array= new int[N.Length];
+            for(int i=0; i<N.Length; i++)
+            {
+                array[i] = A + D * i;
+            }
             return array;
         }
     }
